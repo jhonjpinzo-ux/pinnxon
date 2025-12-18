@@ -6,98 +6,164 @@
 <title>Pinnxon | Tienda Oficial</title>
 
 <style>
-:root{
-  --bg:#0e0e11;
-  --card:#16161c;
-  --accent:#8b5cf6;
-  --text:#ffffff;
-  --muted:#9ca3af;
+:root {
+  --bg: #0e0e11;
+  --card: #16161c;
+  --accent: #8b5cf6;
+  --text: #ffffff;
+  --muted: #9ca3af;
 }
 
-*{
-  box-sizing:border-box;
-  font-family:'Segoe UI',system-ui,sans-serif;
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
-body{
-  margin:0;
-  background:radial-gradient(circle at top,#1b1b29,var(--bg));
-  color:var(--text);
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #1b1b29, var(--bg));
+  color: var(--text);
 }
 
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:40px 20px;
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(14,14,17,.7);
+  border-bottom: 1px solid rgba(255,255,255,.05);
 }
 
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.card{
-  background:linear-gradient(180deg,#1c1c25,var(--card));
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 20px 40px rgba(0,0,0,.4);
-  transition:.4s ease;
-  animation:fadeUp .7s ease both;
+.logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
-.card:hover{
-  transform:translateY(-6px) scale(1.02);
-  box-shadow:0 30px 60px rgba(0,0,0,.6);
+.logo span {
+  color: var(--accent);
 }
 
-.card img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 90px 20px 60px;
+  animation: fadeUp 1s ease;
 }
 
-.card h3{
-  margin:14px;
-  font-size:1.15rem;
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  margin-bottom: 10px;
 }
 
-.card p{
-  margin:0 14px;
-  color:var(--muted);
-  font-size:.95rem;
+.hero p {
+  max-width: 600px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 1.05rem;
 }
 
-.price{
-  margin:14px;
-  font-size:1.3rem;
-  font-weight:700;
+/* GRID */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px 80px;
 }
 
-.btn{
-  display:block;
-  margin:14px;
-  padding:12px;
-  text-align:center;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--accent),#6d28d9);
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  transition:.3s;
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
 }
 
-.btn:hover{
-  box-shadow:0 0 20px rgba(139,92,246,.6);
-  transform:translateY(-2px);
+/* CARD */
+.card {
+  background: linear-gradient(180deg, #1c1c25, var(--card));
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,.4);
+  transform: translateY(30px);
+  opacity: 0;
+  animation: show 0.7s ease forwards;
 }
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  transition: .3s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 18px;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: .95rem;
+  min-height: 40px;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 14px 0;
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #6d28d9);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: .3s;
+}
+
+.btn:hover {
+  box-shadow: 0 0 20px rgba(139,92,246,.6);
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--muted);
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes show {
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
-
 </head>
 
 <body>
@@ -140,5 +206,7 @@ body{
 
 </body>
 </html>
+
+
 
 
