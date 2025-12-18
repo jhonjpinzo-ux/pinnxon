@@ -6,39 +6,26 @@
   <title>Pinnxon</title>
 
   <style>
+    /* =======================
+       ESTILOS GENERALES
+    ======================= */
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: #0f0f0f;
       color: white;
-      /* Animación de entrada general */
-.fade-in {
-  animation: fadeIn 0.8s ease-in-out;
-  .card {
-  background: #1c1c1c;
-  padding: 15px;
-  border-radius: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-    .card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-}
+      animation: fadeIn 0.8s ease-in-out;
+    }
 
-}
-
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     header {
@@ -47,6 +34,19 @@
       text-align: center;
     }
 
+    /* =======================
+       BANNER
+    ======================= */
+    section.banner {
+      background: url('https://via.placeholder.com/1200x400') center/cover;
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* =======================
+       CONTENEDORES
+    ======================= */
     .container {
       padding: 30px;
       max-width: 1200px;
@@ -59,10 +59,31 @@
       gap: 20px;
     }
 
+    /* =======================
+       TARJETAS DE PRODUCTO
+    ======================= */
     .card {
       background: #1c1c1c;
       padding: 15px;
       border-radius: 15px;
+      animation: productFade 0.6s ease-in-out;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+    }
+
+    @keyframes productFade {
+      from {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .card img {
@@ -76,6 +97,9 @@
       margin: 10px 0;
     }
 
+    /* =======================
+       BOTONES
+    ======================= */
     .btn {
       display: block;
       background: #25D366;
@@ -85,8 +109,26 @@
       border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
 
+    .btn:hover {
+      transform: scale(1.05);
+      background: #1ebe5d;
+    }
+
+    button {
+      padding: 8px 14px;
+      margin: 5px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* =======================
+       WHATSAPP FLOTANTE
+    ======================= */
     .whatsapp {
       position: fixed;
       bottom: 20px;
@@ -97,8 +139,18 @@
       text-decoration: none;
       font-size: 20px;
       color: black;
+      animation: pulse 2s infinite;
     }
 
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* =======================
+       FOOTER
+    ======================= */
     footer {
       text-align: center;
       padding: 20px;
@@ -114,30 +166,22 @@
   <h1>Pinnxon</h1>
   <p>Tu tienda online de productos seleccionados</p>
 </header>
-<section style="
-  background: url('https://via.placeholder.com/1200x400') center/cover;
-  padding: 60px 20px;
-  text-align: center;
-">
+
+<section class="banner">
   <h2 style="font-size: 2rem;">Descubre productos increíbles</h2>
   <p>Compra fácil y rápido por WhatsApp</p>
 </section>
+
 <div style="padding: 20px; text-align: center;">
   <input
     type="text"
     id="searchInput"
     placeholder="Buscar productos..."
     onkeyup="searchProducts()"
-    style="
-      width: 100%;
-      max-width: 400px;
-      padding: 12px;
-      border-radius: 10px;
-      border: none;
-      font-size: 16px;
-    "
+    style="width:100%; max-width:400px; padding:12px; border-radius:10px; border:none; font-size:16px;"
   >
 </div>
+
 <div style="text-align:center; margin-bottom:20px;">
   <button onclick="filterCategory('all')">Todos</button>
   <button onclick="filterCategory('tecnologia')">Tecnología</button>
@@ -148,11 +192,13 @@
 <div class="container">
   <div class="products">
 
-    <div class="card">
-      <img src="img/cinturon.jpg">
-      <h3>Cinturon masajeador termico recargable</h3>
-      <p>Este masajeador eléctrico con función de calor es tu nuevo aliado para brindar sensación de alivio y bienestar en la zona abdominal y lumbar. Ideal para usar en casa, en la oficina o mientras te relajas.
-.</p>
+    <div class="card" data-category="hogar">
+      <img src="img/cinturon.jpg" alt="Cinturón masajeador">
+      <h3>Cinturón masajeador térmico recargable</h3>
+      <p>
+        Masajeador eléctrico con función de calor, ideal para aliviar la zona
+        abdominal y lumbar. Úsalo en casa, oficina o descanso.
+      </p>
       <div class="price">$60.000</div>
       <a class="btn" href="https://wa.me/573145251694" target="_blank">
         Comprar por WhatsApp
@@ -167,6 +213,7 @@
 <footer>
   Pinnxon es un intermediario. Los productos son ofrecidos por terceros.
 </footer>
+
 <script>
 function searchProducts() {
   let input = document.getElementById("searchInput").value.toLowerCase();
@@ -191,5 +238,6 @@ function filterCategory(category) {
 }
 </script>
 
-<body class="fade-in">
+</body>
 </html>
+
