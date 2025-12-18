@@ -84,8 +84,38 @@
 
 <header>
   <h1>Pinnxon</h1>
-  <p>Compra fácil por WhatsApp</p>
+  <p>Tu tienda online de productos seleccionados</p>
 </header>
+<section style="
+  background: url('https://via.placeholder.com/1200x400') center/cover;
+  padding: 60px 20px;
+  text-align: center;
+">
+  <h2 style="font-size: 2rem;">Descubre productos increíbles</h2>
+  <p>Compra fácil y rápido por WhatsApp</p>
+</section>
+<div style="padding: 20px; text-align: center;">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Buscar productos..."
+    onkeyup="searchProducts()"
+    style="
+      width: 100%;
+      max-width: 400px;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    "
+  >
+</div>
+<div style="text-align:center; margin-bottom:20px;">
+  <button onclick="filterCategory('all')">Todos</button>
+  <button onclick="filterCategory('tecnologia')">Tecnología</button>
+  <button onclick="filterCategory('hogar')">Hogar</button>
+  <button onclick="filterCategory('moda')">Moda</button>
+</div>
 
 <div class="container">
   <div class="products">
@@ -109,6 +139,29 @@
 <footer>
   Pinnxon es un intermediario. Los productos son ofrecidos por terceros.
 </footer>
+<script>
+function searchProducts() {
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    card.style.display = card.innerText.toLowerCase().includes(input)
+      ? "block"
+      : "none";
+  });
+}
+
+function filterCategory(category) {
+  let cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    let cat = card.getAttribute("data-category");
+    card.style.display = (category === "all" || cat === category)
+      ? "block"
+      : "none";
+  });
+}
+</script>
 
 </body>
 </html>
